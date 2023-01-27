@@ -1,0 +1,19 @@
+version: '3'
+services:
+  front-dev:
+    restart: always
+    container_name: front-dev
+    image: front-dev:latest
+    volumes:
+      - ~/:/usr/winusr/
+      - ~/Documents/dev/test/m331/cypress:/usr/workspace/m331/proscend/prosrc/www/vue_src/cypress
+      - workspace:/usr/workspace/
+    tty: true
+    environment:
+      - LOCAL_USER_ID=9001 #預設ID=9001
+      - TZ=Asia/Taipei
+    ports:
+      - "8080:80"
+
+volumes:
+  workspace:
